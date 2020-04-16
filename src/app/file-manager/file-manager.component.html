@@ -1,0 +1,43 @@
+<header class="header">
+        <div class="header-container header-cols-size">
+            <i  class="fas fa-arrow-up  header-col1 " (click)="navigateToBack()"
+                [ngClass]="canNavigateUp ? 'back-icon':'back-icon-disable'"></i>
+            <input type="text" class="header-input file-path-input header-col2" [(ngModel)]=currentPath
+                (keyup.enter)="navigateToBack()">
+            <div class="search header-col3">
+                <i class="fas fa-search" (click)="searchForFiles()"></i>
+                <input type="text" class="header-input search-input"
+                    placeholder="Search" [(ngModel)]="searchedName"
+                    (keyup.enter) = "searchForFiles()">
+            </div>
+        </div>       
+</header>
+<div class="file-container">
+    <div class = "content cols-size">
+        <div class="item-data title-border">Name
+            <i class="fas fa-arrow-down arrow-icon" (click)="sortByName()"></i>
+            <i class="fas fa-arrow-up arrow-icon" (click)="sortByNameReverce()" ></i>
+        </div>
+        <div class="item-data title-border">Date Modified
+            <i class="fas fa-arrow-down arrow-icon" (click)="sortByModificationDate()"></i>
+            <i class="fas fa-arrow-up arrow-icon" (click)="sortByModificationDateReverce()"></i>
+        </div>
+        <div class="item-data title-border">Type</div>
+        <div class="item-data title-border">
+            Size
+            <i class="fas fa-arrow-down arrow-icon" (click)="sortBySize()"></i>
+            <i class="fas fa-arrow-up arrow-icon" (click)="sortBySizeReverce()" ></i>
+        </div>
+    </div>
+    <div class = "content cols-size" *ngFor = "let file of (fileElements | async) " >
+        <div class="show-horizontally item-data">
+            <i *ngIf = "file.type === 'folder'" class="fas fa-folder folder-icon item-icon" 
+                (dblclick) = "navigateToFolder(file)"></i> 
+            <i *ngIf="file.type === 'file'" class="far fa-file-alt file-icon item-icon"></i>
+                {{file.name}}
+        </div>
+        <div class="item-data">{{file.modificationDate}}</div>
+        <div class="item-data">{{file.type}}</div>
+        <div class="item-data show-horizontally">{{file.size}} <p *ngIf="file.size">KB</p></div>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+@import '../../theme/variables.scss';
+
+.header {
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+
+    // ---- Header column  sizing ----//
+
+    &-cols-size > &-col1  { width: 2.5%; }
+    &-cols-size > &-col2  { width: 75%; }
+    &-cols-size > &-col3  { width: 20%; }
+
+  
+    .back-icon {
+        color: $icon-color;
+        font-size: $icon-font-size;
+        cursor: pointer;
+        &:hover {
+            color: $icon-color-hover;
+        }
+    }
+    .back-icon-disable {
+        color: lightgray;
+        font-size: $icon-font-size;
+    }
+ 
+    &-input {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        border:1px solid $input-border-color;
+        padding: 0.4em;
+        margin: 0px;
+        outline: none;	
+        font-size: $text-font-size;
+        &:focus {
+            border: 1px solid $input-focus-color;
+        }
+    }
+    .search { 
+        position: relative;
+        &-input { 
+            text-indent: 0.5em;
+            padding-right: 2em;
+           } 
+         .fa-search { 
+            position: absolute;
+            top: 0.3em;
+            left: 9.4em;
+            font-size: $icon-font-size;
+            color: $icon-color;
+            cursor: pointer;
+            &:hover {
+                color: $icon-color-hover;
+            }
+        }
+    }
+}
+
+.file-container {
+    width: 80%;
+    margin: 1.5em 0 0 1em;
+    .content { 
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    .show-horizontally {
+        display: flex;
+        align-items: center;
+    }
+
+    .item-data {
+        box-sizing: border-box;
+        flex-grow: 1;
+        width: 100%; 
+        padding: 0.8em 0.3em;
+        overflow: hidden; 
+        font-size: $text-font-size;
+    }
+    .folder-icon {
+        color: $folder-icon-color;
+    }
+
+    .item-icon {
+        font-size: $icon-font-size;
+        cursor: pointer;
+        margin-right: 0.23em;
+    }
+
+    .arrow-icon {
+        color: $icon-color;
+        margin: 0 0.2em;
+        cursor: pointer;
+
+        &:hover {
+            color:$icon-color-hover;
+        }
+    }
+
+    .title-border {
+        border-right: thin $title-border-color solid;
+    }
+
+ 
+  //------ Table column sizing ------//  
+
+  .cols-size > .item-data  { width: 16%; }
+ 
+}
+
+
+
+
+
+
