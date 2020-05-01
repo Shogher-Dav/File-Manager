@@ -1,7 +1,7 @@
 <header class="header">
         <div class="header-container header-cols-size">
             <i  class="fas fa-arrow-up  header-col1 " (click)="navigateToBack()"
-                [ngClass]="canNavigateUp ? 'back-icon':'back-icon-disable'"></i>
+               [ngClass]="canNavigateUp ? 'back-icon':'back-icon-disable'"></i>
             <input type="text" class="header-input file-path-input header-col2" [(ngModel)]=currentPath
                 (keyup.enter)="navigateToBack()">
             <div class="search header-col3">
@@ -29,7 +29,8 @@
             <i class="fas fa-arrow-up arrow-icon" (click)="sortBySizeReverce()" ></i>
         </div>
     </div>
-    <div class = "content cols-size" *ngFor = "let file of (fileElements | async) " >
+    <div  *ngFor = "let file of (fileElements | async); let colIdx = index" >
+  <div #divConteiner class = "content cols-size border-class">
         <div class="show-horizontally item-data">
             <i *ngIf = "file.type === 'folder'" class="fas fa-folder folder-icon item-icon" 
                 (dblclick) = "navigateToFolder(file)"></i> 
@@ -41,3 +42,5 @@
         <div class="item-data show-horizontally">{{file.size}} <p *ngIf="file.size">KB</p></div>
     </div>
 </div>
+</div>
+
